@@ -1,0 +1,65 @@
+.input2 {
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+form {
+  user-select: none;
+}
+
+.flex-row {
+  gap: 0.5rem !important;
+}
+
+.description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.action {
+  display: flex;
+  width: 100%;
+
+  tui-select {
+    width: 100%;
+  }
+}
+
+.image-placeholder {
+  width: 4rem;
+  height: 6rem;
+  background: #d1d1d1;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.width-auto {
+  width: auto!important;
+}
+
+.thumbnail,
+.thumbnail img {
+  width: 4rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+
+.submit {
+  .action,
+  button {
+    width: 100%;
+  }
+
+  margin-top: 2rem;
+}
+
+.pl-1 {
+  padding-left: 0.2rem;
+}

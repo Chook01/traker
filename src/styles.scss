@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+.margin-top-1 {
+  margin-top: 1rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.user-select-none,
+.t-heading {
+  user-select: none;
+}
+
+#list-ordered .t-header {
+  background: rgba(128, 128, 128, 0.3);
+}
+
+#list-done .t-header {
+  background: rgba(255, 166, 0, 0.3);
+}
+
+#list-sent .t-header {
+  background: rgba(65, 105, 225, 0.3);
+}
+
+#list-payment .t-header {
+  background: rgba(0, 128, 0, 0.3);
+}

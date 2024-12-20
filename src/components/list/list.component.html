@@ -1,0 +1,73 @@
+<tui-accordion class="container" [closeOthers]="false" [rounded]="false">
+    <tui-accordion-item [open]="true" id="list-ordered">
+        <tui-icon icon="@tui.circle" [style.color]="'gray'" />
+        Naručeno
+        <ng-template tuiAccordionItemContent>
+            @if (!isOrdersLoading) {
+            <span class="list-empty" *ngIf="!items.order.length">Lista je prazna.</span>
+            <app-list-item [data]="item" *ngFor="let item of items.order"></app-list-item>
+            }
+            @else {
+            <div class="w-100 text-center">
+                <app-loading></app-loading>
+            </div>
+            }
+
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item [open]="true" id="list-done">
+        <tui-icon icon="@tui.check" [style.color]="'orange'" />
+        Gotovo
+        <ng-template tuiAccordionItemContent>
+            @if (!isOrdersLoading) {
+            <span class="list-empty" *ngIf="!items.done.length">Lista je prazna.</span>
+            <app-list-item [data]="item" *ngFor="let item of items.done"></app-list-item>
+            }
+            @else {
+            <div class="w-100 text-center">
+                <app-loading></app-loading>
+            </div>
+            }
+
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item [open]="true" id="list-sent">
+        <tui-icon icon="@tui.package-check" [style.color]="'blue'" />
+        Poslano
+        <ng-template tuiAccordionItemContent>
+            @if (!isOrdersLoading) {
+            <span class="list-empty" *ngIf="!items.delivery.length">Lista je prazna.</span>
+            <app-list-item [data]="item" *ngFor="let item of items.delivery"></app-list-item>
+            }
+            @else {
+            <div class="w-100 text-center">
+                <app-loading></app-loading>
+            </div>
+            }
+
+        </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item [open]="true" id="list-payment">
+        <tui-icon icon="@tui.dollar-sign" [style.color]="'green'" />
+        Plaćeno
+        <ng-template tuiAccordionItemContent>
+            @if (!isOrdersLoading) {
+            <span class="list-empty" *ngIf="!items.payment.length">Lista je prazna.</span>
+            <app-list-item [data]="item" *ngFor="let item of items.payment"></app-list-item>
+            }
+            @else {
+            <div class="w-100 text-center">
+                <app-loading></app-loading>
+            </div>
+            }
+
+        </ng-template>
+    </tui-accordion-item>
+</tui-accordion>
+
+<div class="floating" [class.floating-left]="orderButtonPositionLeft" [class.floating-right]="!orderButtonPositionLeft">
+    <button appearance="floating" iconStart="@tui.file-plus" tuiButton tuiButtonVertical type="button" size="m" (click)="showDialog()">
+        Novi nalog
+    </button>
+
+</div>

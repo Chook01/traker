@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="container settings-screen">
+    <form class="flex-column gap-1">
+        <label tuiLabel class="tui-space_vertical-2 align-center">
+            <input tuiSwitch type="checkbox" [showIcons]="true" [(ngModel)]="orderButtonSide" (ngModelChange)="updateSettings()" [size]="'m'" name="orderButtonSide" />
+            "Dodaj narudžbu" lijevo
+        </label>
+
+        <label tuiLabel class="tui-space_vertical-2 align-center">
+            <input tuiSwitch type="checkbox" [showIcons]="true" [(ngModel)]="listLocationVisible" (ngModelChange)="updateSettings()" [size]="'m'" name="listLocationVisible" />
+            Lokacija narudžbe na listi
+        </label>
+
+        <button tuiButton (click)="logout()" style="margin-top: 3rem">
+            Odjava
+        </button>
+    </form>
+</div>

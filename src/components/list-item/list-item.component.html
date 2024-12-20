@@ -1,0 +1,11 @@
+<div class="list-item-container" *ngIf="data">
+    <div class="item" (click)="showDialog()">
+        <div class="left">
+            <tui-icon [icon]="icon.name" [style.color]="icon.color" />
+            <span *ngIf="data.client">{{data.client}} <small class="location-small" *ngIf="locationVisible">({{translatedContent[data.location]}})</small></span>
+        </div>
+        <div class="right flex-column text-right">
+            <span *ngIf="timeAgo">{{timeAgo.value ? timeAgo.value : ''}} {{timeAgo.key}}</span>
+        </div>
+    </div>
+</div>

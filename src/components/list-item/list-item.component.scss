@@ -1,0 +1,28 @@
+.list-item-container {
+  .item {
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(128 128 128 / 55%);
+    padding: 0.5rem;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span {
+      padding-left: 0.4rem;
+    }
+  }
+
+  .location-small {
+    color: gray;
+    font-size: 0.8rem;
+  }
+}

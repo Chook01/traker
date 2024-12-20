@@ -1,0 +1,34 @@
+.login {
+  img {
+    max-width: 70%;
+    object-fit: contain;
+    margin-bottom: 2rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
+
+  input {
+    height: 2.3rem;
+    border-radius: 0.4rem;
+    border: 1px solid gray;
+    padding-left: 1rem;
+    width: 60%;
+  }
+
+  button {
+    margin-top: 1rem;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    background: beige;
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
+  }
+}

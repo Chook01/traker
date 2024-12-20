@@ -1,0 +1,15 @@
+<tui-app-bar>
+
+    @if (isBackVisible) {
+    <button title="Back" tuiAppBarBack tuiSlot="left" type="button" (click)="returnToHome()"></button>
+    }
+
+    <label tuiTitle>
+        Graver Elite
+        <span tuiSubtitle>Radni nalog</span>
+    </label>
+
+    @if (isSettingsVisible) {
+    <button iconStart="@tui.settings" title="Settings" tuiIconButton tuiSlot="right" type="button" (click)="openSettings()"></button>
+    }
+</tui-app-bar>

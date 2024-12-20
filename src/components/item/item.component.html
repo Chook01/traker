@@ -1,0 +1,120 @@
+<form>
+    <br>
+    <tui-input [(ngModel)]="client" name="client">
+        Ime klijenta
+        <input tuiTextfieldLegacy [tuiAutoFocus]="!client" type="text" required />
+    </tui-input>
+
+    <div class="description">
+        <tui-textarea [(ngModel)]="description" name="description" class="textarea" [expandable]="true">Opis narudžbe</tui-textarea>
+    </div>
+
+    <div class="images flex-row" id="imageRow">
+        <ng-container *ngIf="data.thumbnails">
+            <div class="thumbnail" *ngFor="let img of data.thumbnails" (click)="showImage(img)">
+                <img [src]="img" alt="">
+            </div>
+        </ng-container>
+
+        <div class="image-placeholder" style="position: relative">
+            <tui-icon icon="@tui.file-plus" [style.color]="'gray'" />
+
+            <label tuiInputFiles style="height: 100%; position: absolute; opacity: 0;">
+                <input tuiInputFiles accept="image/*" [multiple]="true" [ngModel]="images" name="images" (ngModelChange)="onChangeFile($event)" />
+            </label>
+        </div>
+    </div>
+
+    <div class="flex-row">
+        <div class="action">
+            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedStatus[status]" name="status" [(ngModel)]="status">
+                Odaberi status
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        <button tuiOption type="button" [value]="'order'">
+                            <tui-icon icon="@tui.circle" [style.color]="'gray'" />
+                            <span class="pl-1">Naručeno</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'done'">
+                            <tui-icon icon="@tui.check" [style.color]="'orange'" />
+                            <span class="pl-1">Gotovo</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'delivery'">
+                            <tui-icon icon="@tui.package-check" [style.color]="'blue'" />
+                            <span class="pl-1">Poslano</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'payment'">
+                            <tui-icon icon="@tui.dollar-sign" [style.color]="'green'" />
+                            <span class="pl-1">Plaćeno</span>
+                        </button>
+                    </tui-data-list>
+                </ng-template>
+            </tui-select>
+        </div>
+
+
+        <div class="action">
+            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedContent[locationReferer]" name="locationReferer" [(ngModel)]="locationReferer">
+                Lokacija
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        <button tuiOption type="button" [value]="'graver_elite'">
+                            <tui-icon icon="@tui.instagram" [style.color]="'pink'" />
+                            <span class="pl-1">graver.elite</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'daske_za_rezanje'">
+                            <tui-icon icon="@tui.instagram" [style.color]="'pink'" />
+                            <span class="pl-1">daske_za_rezanje</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'messenger'">
+                            <tui-icon icon="@tui.package-check" [style.color]="'blue'" />
+                            <span class="pl-1">Messenger</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'shop'">
+                            <tui-icon icon="@tui.shopping-cart" [style.color]="'gray'" />
+                            <span class="pl-1">Web Shop</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'olx'">
+                            <tui-icon icon="@tui.circle" [style.color]="'gray'" />
+                            <span class="pl-1">OLX.ba</span>
+                        </button>
+                        <button tuiOption type="button" [value]="'personal'">
+                            <tui-icon icon="@tui.handshake" [style.color]="'gray'" />
+                            <span class="pl-1">Uživo</span>
+                        </button>
+                    </tui-data-list>
+                </ng-template>
+            </tui-select>
+        </div>
+    </div>
+
+    <div class="flex-row submit">
+        <div class="action">
+            <button tuiButton (click)="saveChanges()" [disabled]="isDeleteLoading" [loading]="isSubmitLoading">
+                Spremi
+            </button>
+        </div>
+
+        <div class="action">
+            <button tuiButton appearance="outline" (click)="close()">
+                Otkaži
+            </button>
+        </div>
+
+        <div class="action width-auto">
+            <button tuiButton appearance="outline" (click)="deleteOrder()" [disabled]="isSubmitLoading" [loading]="isDeleteLoading">
+                <tui-icon icon="@tui.trash-2" [style.color]="'red'" />
+            </button>
+        </div>
+    </div>
+</form>
+
+<ng-template #preview let-preview>
+    <tui-preview [rotatable]="false" [zoomable]="false">
+        <img [src]="previewImg">
+
+        <button iconStart="@tui.x" tuiIconButton tuiPreviewAction type="button" (click)="preview.complete()">
+            Close
+        </button>
+    </tui-preview>
+</ng-template>
