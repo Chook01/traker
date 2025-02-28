@@ -1,0 +1,38 @@
+@if (item()) {
+<div tuiPlatform="web" class="h-100">
+    <div tuiAppearance="floating" tuiCardLarge class="h-100">
+        <section class="section">
+            <img [src]="thumbnail" alt="Daska za rezanje 38cm x 18cm">
+        </section>
+
+        <header tuiHeader>
+            <p>{{item().name}}</p>
+        </header>
+
+
+        <footer>
+            <div class="count">
+                <div class="left">
+                    <button size="m" tuiButton type="button" appearance="outline" (click)="changeQuantity('subtract')" [disabled]="isLoading()">
+                        @if (isLoading()){
+                            <tui-icon icon="@tui.loader-circle" class="spinning" [style.font-size.rem]="1.5" />
+                        } @else {
+                            <tui-icon icon="@tui.minus" [style.font-size.rem]="1.5" />
+                        }
+                    </button>
+                </div>
+                <div class="center">{{item().quantity}}</div>
+                <div class="right">
+                    <button size="m" tuiButton type="button" appearance="outline" (click)="changeQuantity('add')" [disabled]="isLoading()">
+                        @if (isLoading()){
+                            <tui-icon icon="@tui.loader-circle" class="spinning" [style.font-size.rem]="1.5" />
+                        } @else {
+                            <tui-icon icon="@tui.plus" [style.font-size.rem]="1.5" />
+                        }
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+}

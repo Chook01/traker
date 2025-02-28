@@ -50,6 +50,12 @@ export class ApiService {
     return this.http.patch(`${this.API_URL}/collections/orders/records/${id}`, data, { headers: headers });
   }
 
+  public updateCollectionItem(collection: string, id: string, data: any) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', this.userData.JWT_TOKEN);
+    return this.http.patch(`${this.API_URL}/collections/${collection}/records/${id}`, data, { headers: headers });
+  }
+
   public deleteOrder(id: string) {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', this.userData.JWT_TOKEN);

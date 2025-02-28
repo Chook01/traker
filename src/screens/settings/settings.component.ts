@@ -6,7 +6,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { Settings } from '../../interfaces/settings.interface';
 @Component({
   selector: 'app-settings',
-  imports: [FormsModule, ReactiveFormsModule, TuiSwitch, TuiLabel, HeaderComponent, TuiButton],
+  imports: [FormsModule, ReactiveFormsModule, TuiSwitch, TuiLabel, TuiButton],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })

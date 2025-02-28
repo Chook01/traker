@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        @for (item of inventory; track item.id) {
+            <div class="col">
+                <app-inventory-card [item]="item"></app-inventory-card>
+            </div>
+        }
+    </div>
+</div>

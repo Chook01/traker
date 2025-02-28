@@ -5,7 +5,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [ListComponent, HeaderComponent],
+  imports: [ListComponent],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })

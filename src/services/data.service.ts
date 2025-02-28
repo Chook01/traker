@@ -19,6 +19,14 @@ export class DataService {
     return this.apiService.getItems('orders');
   }
 
+  public getInventory(): any {
+    return this.apiService.getItems('inventory');
+  }
+
+  public updateIventoryQuantity(id: string, quantity: number): any {
+    return this.apiService.updateCollectionItem('inventory', id, { quantity: quantity });
+  }
+
   public getImage(collection: string, id: string, filename: string, size?: string) {
     return `${this.apiService.API_URL}/files/${collection}/${id}/${filename}${size ? `?thumb=${size}` : ''}`;
   }

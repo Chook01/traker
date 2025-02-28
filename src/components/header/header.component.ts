@@ -22,17 +22,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private routeNavigationSubscription: Subscription = new Subscription();
 
   public ngOnInit(): void {
-    this.onRouteChange();
     this.handleRouteSubscription();
   }
 
-  private onRouteChange(): void {
-    const route = this.router.url;
-    if (route == '/settings') {
+  private onRouteChange(event: NavigationStart): void {
+    if (event.url.includes('settings')) {
       this.isSettingsVisible = false;
       this.isBackVisible = true;
     }
-    else if (route == '/') {
+    else {
       this.isSettingsVisible = true;
       this.isBackVisible = false;
     }
@@ -41,7 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private handleRouteSubscription(): void {
     this.routeNavigationSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.onRouteChange();
+        this.onRouteChange(event);
       }
     });
   }

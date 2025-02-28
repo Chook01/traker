@@ -1,10 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '../screens/login/login.component';
-import { OrdersComponent } from '../screens/orders/orders.component';
-import { SettingsComponent } from '../screens/settings/settings.component';
 
 export const routes: Routes = [
-    { path: '', component: OrdersComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'settings', component: SettingsComponent }, 
+    { path: '', loadComponent: () => import('../screens/orders/orders.component').then(m => m.OrdersComponent) },
+    { path: 'inventory', loadComponent: () => import('../screens/inventory/inventory.component').then(m => m.InventoryComponent) },
+    { path: 'login', loadComponent: () => import('../screens/login/login.component').then(m => m.LoginComponent) },
+    { path: 'settings', loadComponent: () => import('../screens/settings/settings.component').then(m => m.SettingsComponent) },
 ];
