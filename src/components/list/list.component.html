@@ -5,7 +5,7 @@
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.order.length">Lista je prazna.</span>
-            <app-list-item [data]="item" *ngFor="let item of items.order"></app-list-item>
+            <app-list-item [data]="item" [first]="first" [last]="last" *ngFor="let item of items.order; let first = first; let last = last;"></app-list-item>
             }
             @else {
             <div class="w-100 text-center">
@@ -21,7 +21,7 @@
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.done.length">Lista je prazna.</span>
-            <app-list-item [data]="item" *ngFor="let item of items.done"></app-list-item>
+            <app-list-item [data]="item" [first]="first" [last]="last" *ngFor="let item of items.done; let first = first; let last = last;"></app-list-item>
             }
             @else {
             <div class="w-100 text-center">
@@ -37,7 +37,7 @@
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.delivery.length">Lista je prazna.</span>
-            <app-list-item [data]="item" *ngFor="let item of items.delivery"></app-list-item>
+            <app-list-item [data]="item" [first]="first" [last]="last" *ngFor="let item of items.delivery; let first = first; let last = last;"></app-list-item>
             }
             @else {
             <div class="w-100 text-center">
@@ -53,7 +53,7 @@
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.payment.length">Lista je prazna.</span>
-            <app-list-item [data]="item" *ngFor="let item of items.payment"></app-list-item>
+            <app-list-item [data]="item" [first]="first" [last]="last" *ngFor="let item of items.payment; let first = first; let last = last;"></app-list-item>
             }
             @else {
             <div class="w-100 text-center">

@@ -18,6 +18,8 @@ import CustomDate from '../../shared/customDate';
 export class ListItemComponent implements OnInit {
 
   @Input() data!: Order;
+  @Input() first: boolean = false;
+  @Input() last: boolean = false;
 
   icon = this.getIcon();
   timeAgo = { key: '', value: 0 }

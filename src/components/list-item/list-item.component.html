@@ -1,4 +1,4 @@
-<div class="list-item-container" *ngIf="data">
+<div class="list-item-container" *ngIf="data" [class.first]="first" [class.last]="last">
     <div class="item" (click)="showDialog()">
         <div class="left">
             <tui-icon [icon]="icon.name" [style.color]="icon.color" />
