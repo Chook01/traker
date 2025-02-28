@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TuiAccordion } from '@taiga-ui/kit';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { ListItemComponent } from '../list-item/list-item.component';
@@ -19,7 +19,7 @@ import { LoadingComponent } from '../loading/loading.component';
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  constructor(private dataService: DataService) { }
+  private dataService = inject(DataService);
 
   public items: {
     order: Order[],

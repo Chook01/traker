@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   public API_URL = 'https://order-api.graver-elite.com/api';
 

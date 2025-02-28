@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  private apiService = inject(ApiService);
+  private router = inject(Router);
+
   ngOnInit(): void {
     this.redirectIfAuthenticated();
   }

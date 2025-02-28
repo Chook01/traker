@@ -42,7 +42,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class ItemComponent {
 
-  //injections
   public readonly context = injectContext<TuiDialogContext<string, Order>>();
 
   @ViewChild('preview')

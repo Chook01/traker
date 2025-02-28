@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TuiRoot } from '@taiga-ui/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { ApiService } from '../services/api.service';
@@ -12,11 +12,9 @@ import { DataService } from '../services/data.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(
-    private router: Router,
-    private apiService: ApiService,
-    private dataService: DataService
-  ) { }
+  private router = inject(Router);
+  private apiService = inject(ApiService);
+  private dataService = inject(DataService);
 
   ngOnInit(): void {
     this.handleStorage();

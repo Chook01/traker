@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { TuiIcon } from '@taiga-ui/core';
 import { tuiDialog } from '@taiga-ui/core';
 import { ItemComponent } from '../item/item.component';
@@ -17,6 +17,8 @@ import CustomDate from '../../shared/customDate';
 
 export class ListItemComponent implements OnInit {
 
+  private dataService = inject(DataService);
+
   @Input() data!: Order;
   @Input() first: boolean = false;
   @Input() last: boolean = false;
@@ -34,8 +36,6 @@ export class ListItemComponent implements OnInit {
     unknown: '-',
     personal: 'Uživo'
   }
-
-  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.icon = this.getIcon();

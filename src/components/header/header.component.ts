@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
 import { TuiButton, TuiTitle } from '@taiga-ui/core';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router) { }
+  private router = inject(Router);
 
   public isSettingsVisible: boolean = false;
   public isBackVisible: boolean = false;

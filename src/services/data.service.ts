@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, signal } from '@angular/core';
+import { EventEmitter, inject, Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { Subject } from 'rxjs';
 import { Settings } from '../interfaces/settings.interface';
@@ -8,13 +8,12 @@ import { Settings } from '../interfaces/settings.interface';
 })
 export class DataService {
 
+  private apiService = inject(ApiService);
+
   public orders: any;
   public settings: Settings = { order_button_side_left: false, list_location_visible: true };
 
   public orderUpdate$ = new EventEmitter();
-
-  constructor(private apiService: ApiService) {
-  }
 
   public getOrders(): any {
     return this.apiService.getItems('orders');
