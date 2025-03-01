@@ -6,6 +6,7 @@ import { Order } from '../../interfaces/order.interface';
 import { NgIf } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import CustomDate from '../../shared/customDate';
+import { orderMap } from '../../shared/map';
 
 @Component({
   selector: 'app-list-item',
@@ -27,16 +28,8 @@ export class ListItemComponent implements OnInit {
   timeAgo = { key: '', value: 0 }
   public locationVisible = true;
 
-  public translatedContent = {
-    shop: 'Web Shop',
-    graver_elite: 'graver.elite',
-    daske_za_rezanje: 'daske_za_rezanje',
-    olx: 'OLX.ba',
-    messenger: 'Messenger',
-    unknown: '-',
-    personal: 'Uživo'
-  }
-
+  public translatedContent = orderMap.location;
+  
   ngOnInit(): void {
     this.icon = this.getIcon();
     this.timeAgo = this.getTimeAgo();

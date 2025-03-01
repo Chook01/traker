@@ -12,6 +12,8 @@ import { TuiPreview, TuiPreviewDialogService } from '@taiga-ui/kit';
 import { TuiDataListWrapper } from '@taiga-ui/kit';
 import { TuiSelectModule, TuiTextfieldControllerModule } from '@taiga-ui/legacy';
 import { ApiService } from '../../services/api.service';
+import { OrderLocation, OrderStatus } from '../../types/order';
+import { orderMap } from '../../shared/map';
 
 @Component({
   selector: 'app-item',
@@ -64,22 +66,8 @@ export class ItemComponent {
   public isSubmitLoading: boolean = false;
   public isDeleteLoading: boolean = false;
 
-  public translatedStatus = {
-    order: 'Naručeno',
-    done: 'Gotovo',
-    delivery: 'Poslano',
-    payment: 'Plaćeno',
-  }
-
-  public translatedContent = {
-    shop: 'Web Shop',
-    graver_elite: 'graver.elite',
-    daske_za_rezanje: 'daske_za_rezanje',
-    olx: 'OLX.ba',
-    messenger: 'Messenger',
-    unknown: '-',
-    personal: 'Uživo'
-  }
+  public translatedStatus = orderMap.status;
+  public translatedContent = orderMap.location;
 
 
   protected close(): void {
@@ -104,16 +92,16 @@ export class ItemComponent {
     this.previewDialogService.open(this.preview || '').subscribe();
   }
 
-  public status: 'order' | 'done' | 'delivery' | 'payment' = this.getStatus();
-  public locationReferer: 'shop' | 'graver_elite' | 'daske_za_rezanje' | 'olx' | 'messenger' | 'unknown' | 'personal' = this.getLocation();
+  public status: OrderStatus = this.getStatus();
+  public locationReferer: OrderLocation = this.getLocation();
 
-  private getStatus(): 'order' | 'done' | 'delivery' | 'payment' {
+  private getStatus(): OrderStatus {
     if (!this.data) return 'order';
 
     return this.data.status;
   }
 
-  private getLocation(): 'shop' | 'graver_elite' | 'daske_za_rezanje' | 'olx' | 'messenger' | 'unknown' | 'personal' {
+  private getLocation(): OrderLocation {
     if (!this.data.location) return 'unknown';
     return this.data.location;
   }
