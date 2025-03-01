@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public isSettingsVisible: boolean = false;
   public isBackVisible: boolean = false;
+  public routeTitle: 'Radni nalog' | 'Inventar' = 'Radni nalog';
 
   private routeNavigationSubscription: Subscription = new Subscription();
 
@@ -26,6 +27,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private onRouteChange(event: NavigationStart): void {
+
+    if(event.url.includes('inventory')) {
+      this.routeTitle = 'Inventar';
+    }
+    else {
+      this.routeTitle = 'Radni nalog';
+    }
+
     if (event.url.includes('settings')) {
       this.isSettingsVisible = false;
       this.isBackVisible = true;

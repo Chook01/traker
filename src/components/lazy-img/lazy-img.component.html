@@ -1,0 +1,7 @@
+<img [src]="src()" (load)="onImgLoad()" class="preload-img" />
+
+@if (hasLoaded()) {
+    <img [src]="src()" [style]="{ width: width(), height: height() }"  />
+} @else {
+    <div [style]="{ width: width(), height: height() }" class="img-skeleton"></div>
+}

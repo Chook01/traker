@@ -1,0 +1,14 @@
+.img-skeleton {
+  background-color: gray;
+  border-radius: 0.5rem;
+}
+
+.preload-img {
+  height: 0;
+  width: 0;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 0.5rem;
+}

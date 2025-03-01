@@ -5,6 +5,7 @@ import { TuiBadge } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiHeader } from '@taiga-ui/layout';
 import { InventoryItem } from '../../interfaces/inventory-item.interface';
 import { DataService } from '../../services/data.service';
+import { LazyImgComponent } from '../lazy-img/lazy-img.component';
 
 @Component({
   selector: 'app-inventory-card',
@@ -14,7 +15,9 @@ import { DataService } from '../../services/data.service';
     TuiCardLarge,
     TuiHeader,
     TuiPlatform,
-    TuiIcon
+    TuiIcon,
+    TuiBadge,
+    LazyImgComponent
   ],
   templateUrl: './inventory-card.component.html',
   styleUrl: './inventory-card.component.scss',
