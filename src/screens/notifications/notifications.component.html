@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h2 class="text-center">Obavijesti</h2>
+        <button tuiButton appearance="flat" size="s">
+            <tui-icon icon="@tui.check-check" [style.font-size.rem]="1.5" />
+            Pročitaj sve
+        </button>
+    </div>
+
+    @if (notifications()) {
+
+        @for (noti of notifications(); track noti.id) {
+            
+            <tui-notification [appearance]="noti.type" size="m" class="margin-top-1">
+                <div tuiTitle [style.padding-inline-end.rem]="2">
+                    {{noti.title}}
+                <div tuiSubtitle [innerHTML]="noti.message"></div>
+            </div>
+            <button iconStart="@tui.x" tuiIconButton type="button">
+                Zatvori
+            </button>
+        </tui-notification>
+    } 
+}
+</div>

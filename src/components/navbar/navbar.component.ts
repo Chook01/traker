@@ -50,7 +50,9 @@ export class NavbarComponent implements OnInit {
       if (event instanceof NavigationStart) {
         if (event.url.includes('inventory')) {
           this.activeItemIndex = 1;
-        } else {
+        } else if (event.url.includes('notifications')) {
+          this.activeItemIndex = 2;
+        }else {
           this.activeItemIndex = 0;
         }
       }
@@ -64,6 +66,9 @@ export class NavbarComponent implements OnInit {
     }
     else if (item.route == 'order') {
       this.router.navigateByUrl('/');
+    }
+    else if (item.route == 'notifications') {
+      this.router.navigateByUrl('/notifications');
     }
   }
 }

@@ -23,6 +23,10 @@ export class DataService {
     return this.apiService.getItems('inventory');
   }
 
+  public getNotifications(): any {
+    return this.apiService.getItems('notifications');
+  }
+
   public updateIventoryQuantity(id: string, quantity: number): any {
     return this.apiService.updateCollectionItem('inventory', id, { quantity: quantity });
   }
