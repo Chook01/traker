@@ -1,0 +1,27 @@
+<app-lazy-img [src]="thumbnail" width="100%" height="15rem"></app-lazy-img>
+<h3 class="text-center">{{data.name}}</h3>
+
+<ul class="tui-list tui-list_large">
+    <li class="tui-list__item"><span class="fw-bold">Dobavljač: </span>{{data.supplier}}</li>
+    <li class="tui-list__item"><span class="fw-bold">Kontakt: </span>{{data.contact}}</li>
+    <li class="tui-list__item"><span class="fw-bold">Zadnja izmjena: </span>{{timeAgo.value ? timeAgo.value : ''}} {{timeAgo.key}}</li>
+</ul>
+
+<ul class="tui-list tui-list_large">
+    <li class="tui-list__item"><span class="fw-bold">Materijal: </span>{{data.material}}</li>
+    <li class="tui-list__item"><span class="fw-bold">Dimenzije: </span>{{data.dimensions}}</li>
+</ul>
+
+<tui-input [(ngModel)]="data.quantity" name="quantity">
+    Dostupna količina
+    <input tuiTextfieldLegacy type="number" required />
+</tui-input>
+
+<div class="flex-row submit margin-top-2">
+    <div class="action w-100">
+        <button tuiButton (click)="saveChanges()" [loading]="isSubmitLoading" class="w-100">
+            Spremi
+        </button>
+    </div>
+
+</div>

@@ -9,11 +9,11 @@
     >
         {{item().supplier}}
     </tui-badge>
-        <section class="section">
+        <section class="section" (click)="openItem()">
             <app-lazy-img [src]="thumbnail" width="100%" height="10rem"></app-lazy-img>
         </section>
         
-        <header tuiHeader>
+        <header tuiHeader (click)="openItem()">
             <p>{{item().name}}</p>
         </header>
 

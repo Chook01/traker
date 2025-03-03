@@ -37,6 +37,12 @@ export class NavbarComponent implements OnInit {
       route: 'inventory',
       badge: 0,
     },
+    {
+      text: 'Obavijesti',
+      icon: '@tui.bell',
+      route: 'notifications',
+      badge: 1,
+    },
   ];
 
   ngOnInit(): void {

@@ -2,6 +2,10 @@
   margin-top: 1rem;
 }
 
+.margin-top-2 {
+  margin-top: 2rem;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -63,4 +67,8 @@
   position: fixed;
     bottom: 0;
     inline-size: 100%;
+}
+
+.fw-bold {
+  font-weight: bold;
 }

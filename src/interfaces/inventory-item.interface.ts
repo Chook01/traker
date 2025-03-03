@@ -8,4 +8,7 @@ export interface InventoryItem {
     supplier: string,
     thumbnail: string,
     updated: string,
+    contact: string,
+    material: string,
+    dimensions: string,
 }
