@@ -2,6 +2,7 @@ import { EventEmitter, inject, Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { Subject } from 'rxjs';
 import { Settings } from '../interfaces/settings.interface';
+import { NotificationItem } from '../interfaces/notification.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class DataService {
   private apiService = inject(ApiService);
 
   public orders: any;
+  public notifications: NotificationItem[] | undefined;
   public settings: Settings = { order_button_side_left: false, list_location_visible: true };
 
   public orderUpdate$ = new EventEmitter();
@@ -24,7 +26,11 @@ export class DataService {
   }
 
   public getNotifications(): any {
-    return this.apiService.getItems('notifications');
+    return this.apiService.getItemsByFilter('notifications', `read_by!~'${this.apiService.userData.username}'`);
+  }
+
+  public readNotification(id: string): any {
+    return this.apiService.updateCollectionItem('notifications', id, { "read_by+": this.apiService.userData.username });
   }
 
   public updateIventoryQuantity(id: string, quantity: number): any {

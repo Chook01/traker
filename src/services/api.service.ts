@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class ApiService {
   public userData = {
     JWT_TOKEN: '',
     id: '',
-
+    username: ''
   }
 
   public getItem(collection: string, id: string) {
@@ -31,11 +33,17 @@ export class ApiService {
   public getItemsByFilter(collection: string, filter: string) {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', this.userData.JWT_TOKEN);
-    return this.http.get(`${this.API_URL}/collections/${collection}/records?filter=(${filter})`, {headers: headers});
+    return this.http.get(`${this.API_URL}/collections/${collection}/records?sort=-created&filter=(${filter})`, {headers: headers});
+  }
+
+  public getCollectionCount(collection: string) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', this.userData.JWT_TOKEN);
+    return this.http.get(`${this.API_URL}/collections/${collection}/records?sort=-created&perPage=1`, {headers: headers}).pipe(map((response: any) => response['totalItems']))
   }
 
   public loginUser(username: string, password: string) {
-    return this.http.post(`${this.API_URL}/collections/users/auth-with-password`, { identity: username, password });
+    return this.http.post(`${this.API_URL}/collections/users/auth-with-password`, { identity: username, password })
   }
 
   public createOrder(data: any) {

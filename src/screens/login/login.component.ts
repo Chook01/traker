@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +28,9 @@ export class LoginComponent implements OnInit {
     if (!this.username || !this.password) return;
 
     this.apiService.loginUser(this.username, this.password).subscribe({
-      next: (user: any) => {
-        this.apiService.userData.JWT_TOKEN = user['token'];
+      next: (user: any | User) => {
+        this.apiService.userData.JWT_TOKEN = user.token;
+        this.apiService.userData.username = user.record.username;
         window.localStorage.setItem('userData', JSON.stringify(this.apiService.userData));
         this.router.navigateByUrl('/');
       }

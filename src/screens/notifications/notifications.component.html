@@ -1,25 +1,27 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <h2 class="text-center">Obavijesti</h2>
-        <button tuiButton appearance="flat" size="s">
+        <button tuiButton appearance="flat" size="s" (click)="markAllNotificationsAsRead()" *ngIf="notifications() && notifications().length > 0">
             <tui-icon icon="@tui.check-check" [style.font-size.rem]="1.5" />
             Pročitaj sve
         </button>
     </div>
 
-    @if (notifications()) {
+    @if (notifications() && notifications().length > 0) {
 
-        @for (noti of notifications(); track noti.id) {
-            
-            <tui-notification [appearance]="noti.type" size="m" class="margin-top-1">
-                <div tuiTitle [style.padding-inline-end.rem]="2">
-                    {{noti.title}}
-                <div tuiSubtitle [innerHTML]="noti.message"></div>
-            </div>
-            <button iconStart="@tui.x" tuiIconButton type="button">
-                Zatvori
-            </button>
-        </tui-notification>
-    } 
-}
+    @for (noti of notifications(); track noti.id) {
+
+    <tui-notification [appearance]="noti.type" size="m" class="margin-top-1">
+        <div tuiTitle [style.padding-inline-end.rem]="2">
+            {{noti.title}}
+            <div tuiSubtitle [innerHTML]="noti.message"></div>
+        </div>
+        <button iconStart="@tui.x" tuiIconButton type="button" (click)="markNotificationAsRead(noti.id)">
+            Zatvori
+        </button>
+    </tui-notification>
+    }
+    } @else {
+    <p class="text-center">Nema novih obavijesti.</p>
+    }
 </div>
