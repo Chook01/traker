@@ -31,14 +31,14 @@ export class LoginComponent implements OnInit {
       next: (user: any | User) => {
         this.apiService.userData.JWT_TOKEN = user.token;
         this.apiService.userData.username = user.record.username;
-        window.localStorage.setItem('userData', JSON.stringify(this.apiService.userData));
+        window.localStorage.setItem('userData2', JSON.stringify(this.apiService.userData));
         this.router.navigateByUrl('/');
       }
     })
   }
 
   public redirectIfAuthenticated(): void {
-    const userData = localStorage.getItem('userData');
+    const userData = localStorage.getItem('userData2');
     if (userData) {
       this.router.navigateByUrl('/');
     }

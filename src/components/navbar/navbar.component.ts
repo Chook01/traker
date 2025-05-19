@@ -1,4 +1,4 @@
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { TuiButton } from '@taiga-ui/core';
 import { TuiTabBar } from '@taiga-ui/addon-mobile';
@@ -17,7 +17,7 @@ interface Item {
 
 @Component({
   selector: 'app-navbar',
-  imports: [NgForOf, TuiTabBar],
+  imports: [NgForOf, TuiTabBar, NgIf],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
   standalone: true,
@@ -28,6 +28,8 @@ export class NavbarComponent implements OnInit {
   private dataService = inject(DataService);
 
   protected activeItemIndex = 0;
+
+  public visible: boolean = false;
 
   protected readonly items: Item[] = [
     {
@@ -54,6 +56,12 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.getNotificationCount();
+
+        // if(event.url.includes('login')) {
+        //   this.visible = false;
+        // } else {
+        //   this.visible = true;
+        // }
 
         if (event.url.includes('inventory')) {
           this.activeItemIndex = 1;

@@ -2,6 +2,7 @@
     tuiTabBar
     class="tabs"
     [(activeItemIndex)]="activeItemIndex"
+    *ngIf="visible"
 >
     <button
         *ngFor="let item of items"

@@ -18,13 +18,15 @@ export class AppComponent implements OnInit {
   private apiService = inject(ApiService);
   private dataService = inject(DataService);
 
+  public navbarVisible: boolean = true;
+
   ngOnInit(): void {
     this.handleStorage();
     this.redirectAuthenticated();
   }
 
   private redirectAuthenticated(): void {
-    const userData = localStorage.getItem('userData');
+    const userData = localStorage.getItem('userData2');
     const route = this.router.url;
 
     if (userData) {
