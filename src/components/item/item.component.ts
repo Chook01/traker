@@ -25,6 +25,7 @@ import { OrderLocation, OrderStatus } from '../../types/order';
 import { orderMap } from '../../shared/map';
 import { TrackingInfo } from '../../interfaces/tracking-info.interface';
 import { TuiTable } from '@taiga-ui/addon-table';
+import CustomDate from '../../shared/customDate';
 
 @Component({
   selector: 'app-item',
@@ -199,7 +200,17 @@ export class ItemComponent {
     this.apiService.getTrackingInfo(this.trackingNumber).subscribe({
       next: (info: any) => {
         this.isTrackingLoading = false;
-        this.trackingInfo = info;
+
+        let data: TrackingInfo[] = [];
+        info.forEach((item: TrackingInfo) => {
+          data.push({
+            location: item.location,
+            statusName: item.statusName,
+            statusTime: CustomDate.humanizeDate(item.statusTime),
+          });
+        });
+        
+        this.trackingInfo = data;
         this.trackingInfoColumns = Object.keys(this.trackingInfo[0]);
         this.previewDialogService.open(this.tracking || '').subscribe();
       },

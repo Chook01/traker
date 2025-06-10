@@ -27,5 +27,20 @@ export default class CustomDate {
             return { key: "godina", value: years };
         }
     }
+
+    static humanizeDate(date: string): string {
+        const timeDate = date.split("T");
+        const oldDate = timeDate[0].split("-");
+
+        const year = oldDate[0];
+        const month = oldDate[1];
+        const day = oldDate[2];
+
+        const time = timeDate[1].split(":");
+        const hour = time[0];
+        const minute = time[1]; 
+
+        return `${day}.${month}.${year} ${hour}:${minute}`;
+    }
     
 }

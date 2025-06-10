@@ -103,7 +103,7 @@ export class ApiService {
     const formData = new FormData();
     formData.append('id', trackingNumber);
     return this.http.post(
-      'https://www.brzaposta.ba/trackandtrace.php',
+      'https://corsproxy.io/?url=https://www.brzaposta.ba/trackandtrace.php',
       formData
     );
   }
