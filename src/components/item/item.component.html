@@ -1,33 +1,49 @@
 <form>
-    <br>
+    <br />
     <tui-input [(ngModel)]="client" name="client">
         Ime klijenta
         <input tuiTextfieldLegacy [tuiAutoFocus]="!client" type="text" required />
     </tui-input>
 
     <div class="description">
-        <tui-textarea [(ngModel)]="description" name="description" class="textarea" [expandable]="true">Opis narudžbe</tui-textarea>
+        <tui-textarea [(ngModel)]="description" name="description" class="textarea" [expandable]="true">Opis
+            narudžbe</tui-textarea>
     </div>
 
     <div class="images flex-row" id="imageRow">
         <ng-container *ngIf="data.thumbnails">
             <div class="thumbnail" *ngFor="let img of data.thumbnails" (click)="showImage(img)">
-                <img [src]="img" alt="">
+                <img [src]="img" alt="" />
             </div>
         </ng-container>
 
         <div class="image-placeholder" style="position: relative">
             <tui-icon icon="@tui.file-plus" [style.color]="'gray'" />
 
-            <label tuiInputFiles style="height: 100%; position: absolute; opacity: 0;">
-                <input tuiInputFiles accept="image/*" [multiple]="true" [ngModel]="images" name="images" (ngModelChange)="onChangeFile($event)" />
+            <label tuiInputFiles style="height: 100%; position: absolute; opacity: 0">
+                <input tuiInputFiles accept="image/*" [multiple]="true" [ngModel]="images" name="images"
+                    (ngModelChange)="onChangeFile($event)" />
             </label>
         </div>
     </div>
 
+    @if (this.data.id.length) {
+    <div class="d-flex justify-content-between margin-bottom-1 gap-1">
+        <tui-input [(ngModel)]="trackingNumber" name="trackingNumber" class="w-100">
+            Broj pošiljke:
+            <input tuiTextfieldLegacy type="text" required />
+        </tui-input>
+        <button tuiButton appearance="outline" class="width-auto" (click)="trackOrder()" [disabled]="isTrackingLoading"
+            [loading]="isTrackingLoading">
+            <tui-icon icon="@tui.truck" [style.color]="'blue'" />
+        </button>
+    </div>
+    }
+
     <div class="flex-row">
         <div class="action">
-            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedStatus[status]" name="status" [(ngModel)]="status">
+            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedStatus[status]" name="status"
+                [(ngModel)]="status">
                 Odaberi status
                 <ng-template tuiDataList>
                     <tui-data-list>
@@ -52,9 +68,9 @@
             </tui-select>
         </div>
 
-
         <div class="action">
-            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedContent[locationReferer]" name="locationReferer" [(ngModel)]="locationReferer">
+            <tui-select [tuiTextfieldLabelOutside]="true" [valueContent]="translatedContent[locationReferer]"
+                name="locationReferer" [(ngModel)]="locationReferer">
                 Lokacija
                 <ng-template tuiDataList>
                     <tui-data-list>
@@ -96,13 +112,12 @@
         </div>
 
         <div class="action">
-            <button tuiButton appearance="outline" (click)="close()">
-                Otkaži
-            </button>
+            <button tuiButton appearance="outline" (click)="close()">Otkaži</button>
         </div>
 
         <div class="action width-auto">
-            <button tuiButton appearance="outline" (click)="deleteOrder()" [disabled]="isSubmitLoading" [loading]="isDeleteLoading">
+            <button tuiButton appearance="outline" (click)="deleteOrder()" [disabled]="isSubmitLoading"
+                [loading]="isDeleteLoading">
                 <tui-icon icon="@tui.trash-2" [style.color]="'red'" />
             </button>
         </div>
@@ -111,7 +126,32 @@
 
 <ng-template #preview let-preview>
     <tui-preview [rotatable]="false" [zoomable]="false">
-        <img [src]="previewImg">
+        <img [src]="previewImg" />
+
+        <button iconStart="@tui.x" tuiIconButton tuiPreviewAction type="button" (click)="preview.complete()">
+            Close
+        </button>
+    </tui-preview>
+</ng-template>
+
+<ng-template #tracking let-preview>
+    <tui-preview [rotatable]="false" [zoomable]="false">
+        <table tuiTable class="table" [columns]="trackingInfoColumns">
+            <thead>
+                <tr tuiThGroup>
+                    <th tuiTh [resizable]="true" class="fw-bold">Lokacija</th>
+                    <th tuiTh class="fw-bold">Status</th>
+                    <th tuiTh class="fw-bold">Vrijeme</th>
+                </tr>
+            </thead>
+            <tbody tuiTbody [data]="trackingInfo">
+                <tr *ngFor="let item of trackingInfo" tuiTr>
+                    <td *tuiCell="'balance'" tuiTd>
+                        {{item}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <button iconStart="@tui.x" tuiIconButton tuiPreviewAction type="button" (click)="preview.complete()">
             Close

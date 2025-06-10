@@ -10,4 +10,5 @@ export interface Order {
     status: 'order' | 'done' | 'delivery' | 'payment',
     updated: string,
     thumbnails: string[],
+    trackingNumber: string,
 }

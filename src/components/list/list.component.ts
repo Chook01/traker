@@ -106,6 +106,7 @@ export class ListComponent implements OnInit, OnDestroy {
       status: 'order',
       updated: '',
       thumbnails: [],
+      trackingNumber: ''
     }
 
     this.dialog(data).subscribe({
