@@ -18,3 +18,11 @@
 .floating-right {
   right: 1rem;
 }
+
+
+@media (min-width: 800px) {
+  .container {
+    display: flex!important;
+    flex-direction: row!important;
+  }
+}
