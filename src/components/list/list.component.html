@@ -1,7 +1,7 @@
 <tui-accordion class="container" [closeOthers]="false" [rounded]="false">
     <tui-accordion-item [open]="true" id="list-ordered">
         <tui-icon icon="@tui.circle" [style.color]="'gray'" />
-        Naručeno
+        Naručeno <small>({{items.order.length}})</small>
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.order.length">Lista je prazna.</span>
@@ -17,7 +17,7 @@
     </tui-accordion-item>
     <tui-accordion-item [open]="true" id="list-done">
         <tui-icon icon="@tui.check" [style.color]="'orange'" />
-        Gotovo
+        Gotovo <small>({{items.done.length}})</small>
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.done.length">Lista je prazna.</span>
@@ -33,7 +33,7 @@
     </tui-accordion-item>
     <tui-accordion-item [open]="true" id="list-sent">
         <tui-icon icon="@tui.package-check" [style.color]="'blue'" />
-        Poslano
+        Poslano <small>({{items.delivery.length}})</small>
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.delivery.length">Lista je prazna.</span>
@@ -49,7 +49,7 @@
     </tui-accordion-item>
     <tui-accordion-item [open]="true" id="list-payment">
         <tui-icon icon="@tui.dollar-sign" [style.color]="'green'" />
-        Plaćeno
+        Plaćeno <small>({{items.payment.length}})</small>
         <ng-template tuiAccordionItemContent>
             @if (!isOrdersLoading) {
             <span class="list-empty" *ngIf="!items.payment.length">Lista je prazna.</span>

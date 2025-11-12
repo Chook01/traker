@@ -5,7 +5,8 @@ var orderLocation = {
     olx: 'OLX.ba',
     messenger: 'Messenger',
     unknown: '-',
-    personal: 'Uživo'
+    personal: 'Uživo',
+    whatsapp: 'Whatsapp'
 }
 
 var orderStatus = {
